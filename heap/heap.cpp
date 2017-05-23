@@ -55,7 +55,7 @@ void Heap::enqueue(int value) {
 int Heap::dequeue() {
     int v = T[0];
 
-    T[0] = T[size()];
+    T[0] = T[size()-1];
 
     bubbleDown(0); //bajo el último a su posicion
     n--;
