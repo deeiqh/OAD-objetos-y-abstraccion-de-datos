@@ -64,6 +64,7 @@ int Heap::dequeue() {
 
 /* Metodo para subir un nodo recién colocado y obtener un heap válido. */
 void Heap::bubbleUp(int j ) { // j = childPos
+/*
     int i_parent = ceil((j-1)/2);
     while(i_parent >= 0){
         if (T[i_parent] < T[j]){
@@ -76,10 +77,22 @@ void Heap::bubbleUp(int j ) { // j = childPos
         else
             break;
     }
+	*/
+	//RECURSIVO
+	int i_parent = ceil((j-1)/2);
+	if (i_parent >= 0 && T[i_parent] < T[j]){
+		int v = T[i_parent];
+            T[i_parent] = T[j];
+            T[j] = v;
+         	bubbleUp(i_parent);	
+	}		
+
+		
 }
 
 /* Metodo para descender y obtener un heap válido. */
 void Heap::bubbleDown(int fp) { // fp = parentPos
+/*
     while(true){
         int i_l = 2*fp + 1;
         int i_r = 2*(fp+1);
@@ -108,8 +121,29 @@ void Heap::bubbleDown(int fp) { // fp = parentPos
                 break;
         }
     }
+*/ 
+	//RECURSIVO
+	int i_l = 2*fp + 1;
+    int i_r = 2*(fp+1);
+	if (i_l < size() || i_r < size()){
+		int i_mayor;
+        if (i_l >= size())
+            i_mayor = i_r;
+        else{
+            if (i_r >= size())
+        	   i_mayor = i_l;
+            else
+               i_mayor = (T[i_l] > T[i_r]) ? i_l : i_r;
+        }
+		if( T[fp] < T[i_mayor] ){
+            int v = T[fp];
+            T[fp] = T[i_mayor];
+            T[i_mayor] = v;
+            fp = i_mayor;
+			bubbleDown(fp);
+        }		
+	}	
 }
-
 
 
 
