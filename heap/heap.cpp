@@ -124,7 +124,7 @@ void Heap::bubbleDown(int fp) { // fp = parentPos
 */ 
 	//RECURSIVO
 	int i_l = 2*fp + 1;
-    int i_r = 2*(fp+1);
+    	int i_r = 2*(fp+1);
 	if (i_l < size() || i_r < size()){
 		int i_mayor;
         if (i_l >= size())
