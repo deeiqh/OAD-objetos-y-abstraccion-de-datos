@@ -1,0 +1,4 @@
+            if (!cerrar){ 
+                else{ 
+                    resultado += *it;
+                } listo...

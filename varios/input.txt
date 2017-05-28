@@ -1,0 +1,13 @@
+            if (!cerrar){ // si se busca abrir
+
+                else{ //voy copiando los caracteres a la salida
+                    resultado += *it;
+
+                } /*comentario de prueba
+
+essss la prueba
+
+aaa bbb cdf * ds ****   
+////eliminate
+*/
+listo...
