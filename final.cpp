@@ -86,51 +86,44 @@ void stutter(Celda *lista)
 
 Celda *reorg(Celda *lista)
 {	
-	Celda *lista_final;
+
 	Celda *negativos;
 	Celda *positivos;
 	Celda *negativo;
 	Celda *positivo;
-	int flag_posi = false;
-	int flag_nega = false;
+	int flag_posi = true;
+	int flag_nega = true;
+	
 	while(lista != NULL){
-		if ((lista->valor) >= 0){			
-			if(!flag_posi){
-				flag_posi = true;
-				positivos = lista;
-				positivo = lista;
-				lista = lista-> next;
-				positivo->next = NULL;
-				
-			}	
-			else{
-				positivo->next = lista;
-				lista = lista-> next;				
-				positivo = positivo-> next;
-				positivo->next = NULL;
-			}
-			
+		if (flag_posi && (lista->valor) >= 0 ){			    
+			positivos = lista;
+			positivo = lista;
+			flag_posi = false;
+			lista = lista-> next;			
+		}else{
+		    if(flag_nega && (lista->valor) < 0){
+		        negativos = lista;
+		        negativo = lista;
+		        flag_nega = false;
+		        lista = lista->next;		        
+		    }
+		    else{
+		        if((lista->valor) >= 0){
+		            positivo -> next = lista;
+                    positivo = positivo->next;
+                    lista = lista->next;    
+		        }
+		        else{
+		            negativo -> next = lista;
+		            negativo = negativo->next;
+		            lista = lista->next;
+		        }
+		    }	
 		}
-		else{
-			if(!flag_nega){
-				flag_nega = true;
-				negativos = lista;
-				negativo = lista;
-				lista = lista-> next;
-				negativo->next = NULL;
-			}
-			else{
-				negativo->next = lista;
-				lista = lista-> next;				
-				negativo = negativo-> next;
-				negativo->next = NULL;
-			}
-			lista = lista-> next;		
-		}	
 	}
-	negativo = positivos;
-	lista_final = negativos;
-	return lista_final;
+	if (negativo != NULL)
+	    negativo -> next = positivos;
+	return negativos;
 }
 
 int contarDuplicados(Celda *lista)
@@ -155,15 +148,15 @@ int main() {
     Celda* lista = readListRec();
     printListRec(lista);
 	cout << '\n';
-
-	printListRec(reorg(lista));
-	cout << '\n';
 	
 	stutter(lista);
 	printListRec(lista);
 	cout << '\n';	
 	
-	cout << contarDuplicados(lista) << '\n';	
+	cout << contarDuplicados(lista) << "\n\n";	
+
+	printListRec(reorg(lista));
+	cout << '\n';
 
 
     return 0;
@@ -226,4 +219,3 @@ void ImprimeReversa(Celda* lista)
    ImprimeReversa(lista->next);
    cout << lista->valor << '\n';
 }
-
