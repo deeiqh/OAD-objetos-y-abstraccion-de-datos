@@ -74,7 +74,6 @@ void printListRec(Celda* list) {
 
 void stutter(Celda *lista)
 {
-
 	while(lista != NULL){
 		Celda *nodo = new Celda;
 
@@ -89,10 +88,9 @@ void stutter(Celda *lista)
 
 Celda *reorg(Celda *lista)
 {	
-
 	Celda *negativos = NULL;
 	Celda *positivos;
-	Celda *negativo = NULL;
+	Celda *negativo;
 	Celda *positivo;
 	int flag_posi = true;
 	int flag_nega = true;
