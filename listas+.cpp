@@ -56,16 +56,19 @@ void printList(Celda* list) {
     for (Celda* cel = list; cel != NULL; cel = cel->next) {
         cout << cel->valor << endl;
     }
+    cout << "Nuuul";
 }
 
 /* Prints the contents of a linked list recursively. */
 void printListRec(Celda* list) {
     /* Base Case: Empty list, nothing to print! */
-    if (list == NULL) return;
+    if (list == NULL) cout << "Nuuul";
 
     /* Recursive Step: Print the first element, then the remaining ones. */
-    cout << list->valor << endl;
-    printListRec(list->next);
+    else{
+        cout << list->valor << endl;
+        printListRec(list->next);
+    }
 }
 
 
@@ -87,9 +90,9 @@ void stutter(Celda *lista)
 Celda *reorg(Celda *lista)
 {	
 
-	Celda *negativos;
+	Celda *negativos = NULL;
 	Celda *positivos;
-	Celda *negativo;
+	Celda *negativo = NULL;
 	Celda *positivo;
 	int flag_posi = true;
 	int flag_nega = true;
