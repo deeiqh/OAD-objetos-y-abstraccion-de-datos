@@ -14,12 +14,12 @@ struct node
 };
 
 class bst
-{	
+{
 	private:
 		node* root;
 	public:
 		bst() {root = NULL;}
-		
+
 		bool find(int value)
 		{
 			node** n;
@@ -51,26 +51,34 @@ bool bst::insert(int value)
 	return true;
 }
 
-struct lista
+struct node2
 {
-	node* nodo;
-	node* sig;
+    node* nodo;
+    node* sig = NULL;
 };
 
 void bst::imprimir_niveles()
-{ 
-	lista* encadenados1;
+{
+	lista* encadenados1 = NULL;
 	if (root !=  NULL){
 		cout << root->value;
-		
-		encadenados1->nodo = root->child[0];
-		cout << root->child[0]->value;
-		
-		encadenados1 -> sig = root->child[1];
-		cout << root->child[1]-> value;
+
+        if (root->child[0] != NULL){
+            encadenados1->nodo = root->child[0];
+            cout << root->child[0]->value;
+            if (root->child[1] != NULL){
+                encadenados1 -> sig = root->child[1];
+                cout << root->child[1]-> value;
+            }
+        }else{
+            if (root->child[1] != NULL){
+                encadenados1 = root->child[1];
+                cout << root->child[1]-> value;
+            }
+        }
 	}
-	lista* encadenados2;
-	while(encadenados1 != NULL || encadenados2 != NULL){		
+	lista* encadenados2 = NULL;
+	while(encadenados1 != NULL || encadenados2 != NULL){
 		encadenados2 -> nodo = encadenados1-> nodo ->child[0];
 		cout << encadenados1->nodo->child[0]->value;
 		encadenados2 -> sig =  encadenados1-> nodo->child[1];
@@ -88,19 +96,18 @@ int altura()
 int main()
 {
 	bst bst;
-	
+
 	bst.insert(1);
 	bst.insert(2);
 	bst.insert(3);
 	bst.insert(4);
 	bst.insert(5);
 	bst.insert(6);
-	
-	
-	
+
+
+
 	return 0;
 }
-
 
 
 
