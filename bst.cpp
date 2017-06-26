@@ -61,9 +61,10 @@ void bst::imprimir_niveles()
 { lista* encadenados1;
 	if (root !=  NULL){
 		cout << root->value;
-		cout << root->child[0]->value;
 		
 		encadenados1->nodo = root->child[0];
+		cout << root->child[0]->value;
+		
 		encadenados1 -> sig = root->child[1];
 		cout << root->child[1]-> value;
 	}
