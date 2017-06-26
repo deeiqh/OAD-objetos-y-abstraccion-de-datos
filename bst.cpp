@@ -58,7 +58,8 @@ struct lista
 };
 
 void bst::imprimir_niveles()
-{ lista* encadenados1;
+{ 
+	lista* encadenados1;
 	if (root !=  NULL){
 		cout << root->value;
 		
